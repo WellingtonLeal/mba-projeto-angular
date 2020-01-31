@@ -1,0 +1,64 @@
+
+
+
+<mat-toolbar>
+  <mat-toolbar-row>
+    Lista de médicos
+    
+    <button mat-raised-button color ="primary" routerLink="pacientes">
+      Listar Pacientes
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="content">
+  <table mat-table [dataSource]="medicos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> nome </th>
+      <td mat-cell *matCellDef="let medico"> {{ medico.nome }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let medico"> {{ medico.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="crm">
+      <th mat-header-cell *matHeaderCellDef> crm </th>
+      <td mat-cell *matCellDef="let medico"> {{ medico.crm }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let medico">
+        <div class="acoes">
+          <button color="warn" mat-flat-button (click)="remover(medico)">
+            Remover
+          </button>
+
+          <button color="primary" mat-flat-button (click)="editar(medico)">
+            Editar
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+
+   
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+  </table>
+  
+  <mat-toolbar>
+    <mat-toolbar-row>
+   
+      <button mat-raised-button color="primary" routerLink="cadastroMedico"> <mat-icon  matTooltip="Cadastrar">add</mat-icon>
+        Cadastrar Médico
+      </button>
+  
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
